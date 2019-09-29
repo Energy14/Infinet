@@ -1,0 +1,30 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+
+public class DragObject : MonoBehaviour
+{
+    public Image image;
+    private MainCanvas canvas;
+
+    private void Awake()
+    {
+        canvas = GetComponentInParent<MainCanvas>();
+    }
+
+    public void OnBeginDrag(BaseEventData bases)
+    {
+        Debug.Log("Begin");
+        canvas.OnBeginDrag(this);
+    }
+    public void OnEndDrag(BaseEventData bases)
+    {
+        canvas.OnEndDrag();
+    }
+    public void OnDrag(BaseEventData bases)
+    {
+        canvas.OnDrag();
+    }
+}
