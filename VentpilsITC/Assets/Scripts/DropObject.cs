@@ -7,12 +7,19 @@ using UnityEngine.UI;
 public class DropObject : MonoBehaviour
 {
     public Image image;
+    internal string itemName;
     private MainCanvas canvas;
 
     public Sprite sprite
     {
         set
         {
+            if (itemName != "")
+            {
+                GameManager.instance.RemoveItem(itemName);
+            }
+
+
             image.sprite = value;
         }
     }
@@ -24,5 +31,16 @@ public class DropObject : MonoBehaviour
     public void OnDrop(BaseEventData bases)
     {
         canvas.OnDrop(this);
+    }
+    public void OnMouse(BaseEventData data)
+    {
+        if (((PointerEventData)data).button != PointerEventData.InputButton.Right)
+        {
+            return;
+        }
+        GameManager.instance.clearRecipe();
+        sprite = null;
+        GameManager.instance.buttonCollect.SetActive(false);
+
     }
 }

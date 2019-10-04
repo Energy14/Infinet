@@ -6,7 +6,9 @@ using UnityEngine.UI;
 
 public class DragObject : MonoBehaviour
 {
+    public string itemName;
     public Image image;
+    public Text txt;
     private MainCanvas canvas;
 
     private void Awake()
@@ -16,7 +18,6 @@ public class DragObject : MonoBehaviour
 
     public void OnBeginDrag(BaseEventData bases)
     {
-        Debug.Log("Begin");
         canvas.OnBeginDrag(this);
     }
     public void OnEndDrag(BaseEventData bases)
