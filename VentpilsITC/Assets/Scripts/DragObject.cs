@@ -9,6 +9,7 @@ public class DragObject : MonoBehaviour
     public string itemName;
     public Image image;
     public Text txt;
+    public GameObject theObject;
     private MainCanvas canvas;
 
     private void Awake()
