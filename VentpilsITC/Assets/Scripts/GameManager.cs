@@ -32,10 +32,13 @@ public class GameManager : MonoBehaviour
     public ParticleSystem mergeParticles;
     public GameObject tutorial;
     public GameObject stageCompleted;
+    public Text timeObject;
 
     public MainCanvas canvas;
 
     private int i;
+
+    private string timeNumber;
 
     internal readonly List<string> currentRecipe = new List<string>();
 
@@ -126,6 +129,25 @@ public class GameManager : MonoBehaviour
             buttonCollect.SetActive(false);
             stageCompleted.SetActive(true);
         }
+        switch (rItem.name)
+        {
+            case "Proton":
+                timeNumber = "9750000000";
+                break;
+            case "Hydrogen":
+                timeNumber = "7324500000";
+                break;
+            case "The Sun":
+                timeNumber = "4600000000";
+                break;
+            case "Young Earth":
+                timeNumber = "4540000000";
+                break;
+            case "The Earth":
+                timeNumber = "3500000000";
+                break;
+        }
+        timeObject.text = timeNumber + " years ago";
     }
     public void hideTutorial()
     {
