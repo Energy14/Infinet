@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     public GameObject resultObj;
     public Image resultImage;
     public GameObject buttonCollect;
+    public ParticleSystem mergeParticles;
 
     public MainCanvas canvas;
 
@@ -104,6 +105,8 @@ public class GameManager : MonoBehaviour
 
         //TODO make new recipe item
         Debug.Log("Recipe found: " + result.result);
+
+        mergeParticles.Play();
 
         ResourceItem rItem = itemList.Find((item) => item.name == result.result);
         if (rItem == null)

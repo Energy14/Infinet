@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     public void CreateUniverse ()
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("BigBang");
     }
 
     public void ExitGame ()
