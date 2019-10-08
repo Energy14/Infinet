@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     public Image resultImage;
     public GameObject buttonCollect;
     public ParticleSystem mergeParticles;
+    public GameObject tutorial;
 
     public MainCanvas canvas;
 
@@ -40,6 +41,7 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
         buttonCollect.SetActive(false);
+        tutorial.SetActive(true);
     }
 
     public void clearRecipe()
@@ -116,5 +118,9 @@ public class GameManager : MonoBehaviour
         resultObject.itemName = rItem.name;
         resultObject.image.sprite = rItem.sprite;
         buttonCollect.SetActive(true);
+    }
+    public void hideTutorial()
+    {
+        tutorial.SetActive(false);
     }
 }
