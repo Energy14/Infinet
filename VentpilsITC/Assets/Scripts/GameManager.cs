@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 [System.Serializable]
@@ -30,6 +31,7 @@ public class GameManager : MonoBehaviour
     public GameObject buttonCollect;
     public ParticleSystem mergeParticles;
     public GameObject tutorial;
+    public GameObject stageCompleted;
 
     public MainCanvas canvas;
 
@@ -118,9 +120,19 @@ public class GameManager : MonoBehaviour
         resultObject.itemName = rItem.name;
         resultObject.image.sprite = rItem.sprite;
         buttonCollect.SetActive(true);
+
+        if (rItem.name == "The Earth")
+        {
+            buttonCollect.SetActive(false);
+            stageCompleted.SetActive(true);
+        }
     }
     public void hideTutorial()
     {
         tutorial.SetActive(false);
+    }
+    public void secondStage()
+    {
+        SceneManager.LoadScene("SecondStage");
     }
 }
