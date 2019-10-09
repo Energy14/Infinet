@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour
     public GameObject tutorial;
     public GameObject stageCompleted;
     public Text timeObject;
+    public AudioClip mergeSound;
+    public AudioSource audioSource;
 
     public MainCanvas canvas;
 
@@ -47,6 +49,7 @@ public class GameManager : MonoBehaviour
         instance = this;
         buttonCollect.SetActive(false);
         tutorial.SetActive(true);
+        audioSource.clip = mergeSound;
     }
 
     public void clearRecipe()
@@ -114,6 +117,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Recipe found: " + result.result);
 
         mergeParticles.Play();
+        audioSource.Play();
 
         ResourceItem rItem = itemList.Find((item) => item.name == result.result);
         if (rItem == null)
