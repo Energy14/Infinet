@@ -46,7 +46,7 @@ public class MainCanvas : MonoBehaviour
     {
         dragIcon.position = Input.mousePosition;
     }
-    public void OnDrop(DropObject target, int listID)
+    public void OnDrop(DropObject target)
     {
         if (firstSlotTaken == false)
         {
@@ -54,14 +54,14 @@ public class MainCanvas : MonoBehaviour
             firstSlotTaken = true;
             target.itemName = currentDrag.itemName;
             firstSlotImage.sprite = currentDrag.image.sprite;
-            GameManager.instance.AddItem(currentDrag.itemName, listID);
+            GameManager.instance.AddItem(currentDrag.itemName);
         } else if (secondSlotTaken == false)
         {
             secondSlot.SetActive(true);
             secondSlotTaken = true;
             target.itemName = currentDrag.itemName;
             secondSlotImage.sprite = currentDrag.image.sprite;
-            GameManager.instance.AddItem(currentDrag.itemName, listID);
+            GameManager.instance.AddItem(currentDrag.itemName);
         }
     }
     public void OnCollectButton()

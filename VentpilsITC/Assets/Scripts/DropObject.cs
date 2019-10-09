@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class DropObject : MonoBehaviour
 {
     public Image image;
-    public int dropId;
     internal string itemName;
     private MainCanvas canvas;
 
@@ -17,7 +16,7 @@ public class DropObject : MonoBehaviour
         {
             if (itemName != "")
             {
-                GameManager.instance.RemoveItem(itemName, dropId);
+                GameManager.instance.RemoveItem(itemName);
             }
 
 
@@ -31,7 +30,7 @@ public class DropObject : MonoBehaviour
 
     public void OnDrop(BaseEventData bases)
     {
-        canvas.OnDrop(this, dropId);
+        canvas.OnDrop(this);
     }
     public void OnMouse(BaseEventData data)
     {
