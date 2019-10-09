@@ -63,15 +63,25 @@ public class GameManager : MonoBehaviour
         resultObject.image.sprite = null;
     }
 
-    public void AddItem(string item)
+    public void AddItem(string item, int listId)
     {
-        currentRecipe.Add(item);
+        if (currentRecipe.Count <= listId)
+        {
+            currentRecipe.Add(item);
+        } else
+        {
+            currentRecipe[listId] = item;
+        }
         CheckRecipe();
     }
 
-    public void RemoveItem(string item)
+    public void RemoveItem(string item, int listId)
     {
-        currentRecipe.Remove(item);
+        if (currentRecipe.Count >= listId)
+        {
+            return;
+        }
+        currentRecipe.RemoveAt(listId);
     }
 
     public void CheckRecipe()
@@ -90,9 +100,12 @@ public class GameManager : MonoBehaviour
                 Debug.Log("Current recipe item count: " + currentRecipe.Count.ToString());
                 continue;
             }
+            List<string> checkList = new List<string>(recipe.resources);
+
             foreach (string itm in currentRecipe)
             {
-                if (recipe.resources.IndexOf(itm) < 0)
+                //if (recipe.resources.IndexOf(itm) < 0)
+                if (checkList.IndexOf(itm) < 0)
                 {
                     found = false;
                     break;
@@ -100,6 +113,7 @@ public class GameManager : MonoBehaviour
                 {
                     found = true;
                 }
+                checkList.Remove(itm);
             }
             if (found)
             {
